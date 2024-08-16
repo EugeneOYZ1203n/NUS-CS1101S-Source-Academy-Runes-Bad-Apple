@@ -35,11 +35,9 @@ const pixel_display = (arr) => {
     return stack_multi(rows);
 };
 
-const generateFrameFunctionCreator = (size,frame_data, frames)=>{
-    let index = 0;
-    
+const generateFrameFunctionCreator = (size,frame_data,frames,fps)=>{
     const generateFrame = (timestamp) => {
-        index = (index+1)%frames;
+        const index = math_round(timestamp * fps)%frames;
         const data = convertFrameData(size,frame_data[index]);
         const rune = pixel_display(data);
         return rune;
@@ -377,4 +375,5 @@ const fps = 10;
 const duration = 30;
 const frames = length(list(...frame_data));
 
-animate_rune(duration, fps, generateFrameFunctionCreator(size, frame_data, frames));
+animate_rune(duration, fps, generateFrameFunctionCreator(size, frame_data, frames, fps));
+
