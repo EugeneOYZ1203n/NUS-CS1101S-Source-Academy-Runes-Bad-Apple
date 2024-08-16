@@ -6,6 +6,8 @@ https://share.sourceacademy.nus.edu.sg/adpple (Set to Source 4)
 ## What?
 It creates an animated rune in Source Academy that plays the first 30s of Bad Apple at 10fps
 
+[![Watch the video](https://img.youtube.com/vi/TYlJTw7pt7k/maxresdefault.jpg)](https://youtu.be/TYlJTw7pt7k)
+
 ## Why?
 Runes provides the ability to stack images side by side each other, including full squares.
 You know what else is full squares side by side each other, that's right pixels.
