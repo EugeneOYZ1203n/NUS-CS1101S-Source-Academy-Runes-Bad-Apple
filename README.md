@@ -1,6 +1,8 @@
 # Bad Apple in Source Academy
 ##### Using runes library in NUS CS1101S
 
+https://share.sourceacademy.nus.edu.sg/adpple
+
 ## What?
 It creates an animated rune in Source Academy that plays the first 30s of Bad Apple at 10fps
 
