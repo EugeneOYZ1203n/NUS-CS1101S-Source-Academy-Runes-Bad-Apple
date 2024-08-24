@@ -12,7 +12,9 @@ After some research and thinking, I have used a quad tree to greatly boost perfo
 
 Using Quad trees and encoding them as strings, I managed to get a quad tree depth of 7, in other words 2**7=128 x 128 pixels worth of resolution
 
-[![Watch the video](https://img.youtube.com/vi/TYlJTw7pt7k/maxresdefault.jpg)](https://youtu.be/TYlJTw7pt7k)
+[![Watch the video (Normal)](https://img.youtube.com/vi/TLQjHRlrjBU/maxresdefault.jpg)](https://youtu.be/TLQjHRlrjBU)
+
+[![Watch the video (Patchwork)](https://img.youtube.com/vi/jJIa40h_W4M/maxresdefault.jpg)](https://youtu.be/jJIa40h_W4M)
 
 ## Why?
 Runes provides the ability to stack images side by side each other, including full squares.
