@@ -1,5 +1,6 @@
 # Bad Apple in Source Academy
 ##### Using runes library in NUS CS1101S
+##### No Array, No String, No Mutables
 
 ## What?
 It creates an animated rune in Source Academy that plays the first 40s of Bad Apple
@@ -15,6 +16,16 @@ Normal Video Showcase:
 
 Patchwork Video Showcase:
 [![Watch the video (Patchwork)](https://img.youtube.com/vi/jJIa40h_W4M/maxresdefault.jpg)](https://youtu.be/jJIa40h_W4M)
+
+The current version was used for the Contest Challenge in NUS CS1101S, which disallowed the use of arrays, strings and mutables which made it incredibly difficult to encode the data. 
+
+However, the previous quest called Functional Expressionism introduced a function known as pair, which could be used as a linked list node. This solved the issues with arrays (Though introducing a slightly worse runtime complexity since O(n) access time)
+
+Next was the lack of strings which I used to encode the extremely large chunks of data. I replaced it with another linked list using pairs, converting the original strings into base3 encoded integers. However due to the integer limit of 2^32, I had to split that single integer into multiple chunks, I had chosen chunks of max size 3^18.
+
+I had some issues parsing the data due to the reversed format, however I eventually got it somewhat working. 
+
+I am quite proud of this.
 
 ## Why?
 Runes provides the ability to stack images side by side each other, including full squares.
@@ -32,10 +43,12 @@ Process:
 2. Used python, Pillow library, to go through every image, crop it, resize it to 128x128 then read the pixel values
 3. Using these pixel values, recursively split the array into 4 subarrays everytime an array contains more than 1 unique value (Aka if not all white or not all black)
 4. Generated a string for each frame through this recursive pattern with "0" representing black, "1" representing white and "2" representing splitting into 4 children
-5. Paste an array of all the strings into Source Academy
-6. Use parseData function which recursively iterates through the characters in the string and uses stack() and beside() to create the output rune
-7. Use the built in animate_rune() with a generateFrame function that runs parseData on every index of the frame_data array
+5. Reversed the string and converted into base 3 encoded integers of max size 3^18
+6. Generate and Paste the list made of pairs of integers into Source Academy
+7. Use parseData function which recursively iterates through the pairs and integers and uses stack() and beside() to create the output rune
+8. Use the built in animate_rune() with a generateFrame function that runs parseData on every index of the frame_data array
 
-Additionally, I included a setting to better visualise and appreciate the quad tree, toggled through the patchwork boolean variable
+This feature is no longer included:
+A setting to better visualise and appreciate the quad tree, toggled through the patchwork boolean variable
 
 By randomizing the colors of white and black slightly, the quad tree pattern becomes more visible

@@ -1,11 +1,14 @@
 from os import listdir
 from PIL import Image
 
-depth = 7
+depth = 6
 size = 2**depth
 
 count = 0
 res = []
+
+restrict_val = 3
+chunking = 18
 
 def checkSame(array):
     val = array[0]
@@ -31,22 +34,22 @@ def splitArr4(array, _size):
 
     return res
 
-def makeQuadTree(array, _size):
+def makeQuadTree(array, _size, prev):
     if checkSame(array):
         return str(array[0])
     
     splits = splitArr4(array, _size)
-    output = "2"
-    for split in splits:
-        output += makeQuadTree(split, _size//2)
+    res = "2"
+    for split in splits[::-1]:
+        res += makeQuadTree(split, _size//2, prev)
 
-    return output
+    return res
 
-res = "[\n"
+res = "(\n"
 count = 0
 
 for i in range(1,801):
-    filepath = "D:/BackedUp/Projects/2408_NUS_CS1101S_Source_Academy_Runes_BadApple/NUS-CS1101S-Source-Academy-Runes-Bad-Apple/GettingBadAppleData/frames/"+str(i)+".png"
+    filepath = "C:/LaptopProjects/NUS-CS1101S-Source-Academy-Runes-Bad-Apple/GettingBadAppleData/frames/"+str(i)+".png"
 
     with Image.open(filepath) as img: # Size of images = (480, 360)
         img = img.crop((60, 0, 420, 360)) #Left, Up, Right, Down
@@ -56,14 +59,27 @@ for i in range(1,801):
         img = [0 if w < 20 else 1 for w,x,y,z in img]
         #print(img)
 
-        out = makeQuadTree(img, size)
-        #print(out)
+        quad = makeQuadTree(img, size, 1)
+        out = 1
+        for char in quad[::-1]:
+            out *= restrict_val
+            out += int(char)
 
-        res += "\t\"" + out + "\",\n"
+        res += "\t\tpair("
+
+        brackets = 0
+        while out > 0:
+            val = out % 3**chunking
+            out = out//3**chunking
+            res += "pair(" + str(val) + ", "
+            brackets += 1
+        res += "-1"+")"*brackets
+
+        res += ",\n"
 
         count += 1
 
-res = res[:-2] + "\n]"
+res = res + "\t-1" + ")"*count + "\n\t)"
 
 with open("GettingBadAppleData/output.txt", 'w') as outputFile:
     outputFile.write(res)
