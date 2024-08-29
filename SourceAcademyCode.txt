@@ -1,6 +1,10 @@
-"-----------------------------------"
-"|       Bad Apple Animation       |"
-"-----------------------------------"
+import {
+    stack, beside, blank, square, animate_rune, flip_horiz, quarter_turn_right
+} from "rune";
+
+"-----------------------------------";
+"|       Bad Apple Animation       |";
+"-----------------------------------";
 "No Array, no string, no mutables";
 "Will lag briefly when generating the playback";
 "Will lag occassionally when playing but you can";
